@@ -13,15 +13,14 @@ export default function About() {
       transition={{ duration: 0.6 }}
       className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden"
     >
-      <div className="relative w-full h-full aspect-[16/9] max-w-full flex items-center justify-center">
+      <div className="relative h-full aspect-[16/9] max-w-full">
 
         {/* Background Video containing the layout */}
         <video
           src="/portfolio/assets/about_me.mp4"
           autoPlay
-          loop
           playsInline
-          className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+          className="absolute inset-0 w-full h-full object-fill pointer-events-none"
         />
 
         {/* Back Button */}
