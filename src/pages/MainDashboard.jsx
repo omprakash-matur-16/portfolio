@@ -43,11 +43,12 @@ const folders = [
 
 export default function MainDashboard() {
   const [hovered, setHovered] = useState(null);
+  const [bgLoaded, setBgLoaded] = useState(false);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={{ opacity: bgLoaded ? 1 : 0, y: bgLoaded ? 0 : 20 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.6, ease: 'easeInOut' }}
       className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden"
@@ -59,10 +60,11 @@ export default function MainDashboard() {
         <img
           src="/portfolio/assets/2.png"
           alt="background"
+          onLoad={() => setBgLoaded(true)}
           className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none z-0"
         />
 
-        {folders.map((folder) => (
+        {bgLoaded && folders.map((folder) => (
           <Link
             key={folder.id}
             to={folder.to}
