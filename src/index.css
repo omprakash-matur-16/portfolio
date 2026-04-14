@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Hide default cursor globally */
+html, body, * {
+  cursor: none !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #000;
+  color: white;
+}
+
+/* Custom cursor specific */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-image: url('/assets/cursor-pointer.png');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes scrollBelt {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Fallback for when custom cursor hasn't loaded or JS is off */
+html:not(.js-loaded) * {
+  cursor: default !important;
+}
