@@ -7,7 +7,7 @@ const folders = [
     id: 'projects',
     to: '/projects',
     alt: 'My Projects',
-    icon: '/assets/my projects folder icon.png',
+    icon: '/portfolio/assets/my projects folder icon.png',
     // Reference Image X~15%, Y~38%
     style: { top: '38%', left: '15%', width: '18%', height: '26%' },
     imgScale: 4.8,
@@ -16,7 +16,7 @@ const folders = [
     id: 'journey',
     to: '/journey',
     alt: 'My Journey',
-    icon: '/assets/my journey folder icon.png',
+    icon: '/portfolio/assets/my journey folder icon.png',
     // Reference Image X~34%, Y~38%
     style: { top: '33%', left: '29%', width: '15%', height: '24%' },
     imgScale: 4.0,
@@ -25,7 +25,7 @@ const folders = [
     id: 'about',
     to: '/about',
     alt: 'About Me',
-    icon: '/assets/about me folder icon.png',
+    icon: '/portfolio/assets/about me folder icon.png',
     // Reference Image X~7%, Y~62%
     style: { top: '62%', left: '5%', width: '16%', height: '22%' },
     imgScale: 4.0,
@@ -34,7 +34,7 @@ const folders = [
     id: 'contact',
     to: '/contact',
     alt: 'Contact Me',
-    icon: '/assets/contact me folder icon.png',
+    icon: '/portfolio/assets/contact me folder icon.png',
     // Reference Image X~47%, Y~55%
     style: { top: '55%', left: '47%', width: '16%', height: '24%' },
     imgScale: 4.3,
