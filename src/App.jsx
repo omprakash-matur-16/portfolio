@@ -8,12 +8,14 @@ import Projects from './pages/Projects';
 import StaticPage from './components/StaticPage';
 import BedazzleCover from './pages/BedazzleCover';
 import BedazzleFlow from './pages/BedazzleFlow';
+import GlobalPreloader from './components/GlobalPreloader';
 
 export default function App() {
   const location = useLocation();
 
   return (
     <>
+      <GlobalPreloader />
       <CustomCursor />
       
       {/* Route transitions */}
