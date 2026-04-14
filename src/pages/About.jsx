@@ -17,7 +17,7 @@ export default function About() {
 
         {/* Background Video containing the layout */}
         <video
-          src="/assets/about_me.mp4"
+          src="/portfolio/assets/about_me.mp4"
           autoPlay
           loop
           playsInline
@@ -30,8 +30,8 @@ export default function About() {
         {/* Conveyor Belt (Top) */}
         <div className="absolute top-0 left-0 w-full overflow-hidden whitespace-nowrap z-20 pointer-events-none">
           <div style={{ animation: 'scrollBelt 12s linear infinite' }} className="flex w-[200%] origin-left">
-            <img src="/assets/conveyor belt.png" className="w-1/2 object-cover" alt="" />
-            <img src="/assets/conveyor belt.png" className="w-1/2 object-cover" alt="" />
+            <img src="/portfolio/assets/conveyor belt.png" className="w-1/2 object-cover" alt="" />
+            <img src="/portfolio/assets/conveyor belt.png" className="w-1/2 object-cover" alt="" />
           </div>
         </div>
 

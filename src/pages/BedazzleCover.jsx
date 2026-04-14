@@ -20,7 +20,7 @@ export default function BedazzleCover() {
       >
         {/* Background */}
         <img
-          src="/assets/2_2_4.png"
+          src="/portfolio/assets/2_2_4.png"
           alt="Bedazzle"
           className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none"
         />

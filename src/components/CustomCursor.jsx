@@ -35,7 +35,7 @@ export default function CustomCursor() {
       style={{
         left: `${position.x - 12}px`,
         top: `${position.y - 12}px`,
-        backgroundImage: "url('/assets/cursor-pointer.png')",
+        backgroundImage: "url('/portfolio/assets/cursor-pointer.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

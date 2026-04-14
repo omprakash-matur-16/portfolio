@@ -61,7 +61,7 @@ export default function Projects() {
         style={{ aspectRatio: '16/9', height: '100%', maxWidth: '100%', maxHeight: '100%' }}
       >
         <img
-          src="/assets/2_2.png"
+          src="/portfolio/assets/2_2.png"
           alt="background"
           className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none z-0"
         />

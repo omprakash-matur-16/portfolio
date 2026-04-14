@@ -25,7 +25,7 @@ export default function BedazzleFlow() {
     }
   };
 
-  const currentImageSrc = `/assets/b${currentIndex}.png`;
+  const currentImageSrc = `/portfolio/assets/b${currentIndex}.png`;
 
   return (
     <div className="relative w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
