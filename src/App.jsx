@@ -6,6 +6,7 @@ import MainDashboard from './pages/MainDashboard';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import StaticPage from './components/StaticPage';
+import Contact from './pages/Contact';
 import BedazzleCover from './pages/BedazzleCover';
 import BedazzleFlow from './pages/BedazzleFlow';
 import GlobalPreloader from './components/GlobalPreloader';
@@ -28,7 +29,7 @@ export default function App() {
           
           {/* Main folder static pages */}
           <Route path="/journey" element={<StaticPage imageSrc="/portfolio/assets/2_3.png" backTo="/main" />} />
-          <Route path="/contact" element={<StaticPage imageSrc="/portfolio/assets/2_4.png" backTo="/main" />} />
+          <Route path="/contact" element={<Contact />} />
 
           {/* Project sub-pages */}
           <Route path="/projects/lenskart" element={<StaticPage imageSrc="/portfolio/assets/2_2_1.png" backTo="/projects" />} />
