@@ -20,7 +20,7 @@ export default function App() {
       <CustomCursor />
       
       {/* Route transitions */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Landing />} />
           <Route path="/main" element={<MainDashboard />} />

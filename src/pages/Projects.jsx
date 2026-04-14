@@ -52,10 +52,10 @@ export default function Projects() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: bgLoaded ? 1 : 0, y: bgLoaded ? 0 : 20 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
-      className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden"
+      transition={{ duration: 1.0, ease: 'easeInOut' }}
+      className="absolute inset-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
     >
       <div
         className="relative"
@@ -68,31 +68,38 @@ export default function Projects() {
           className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none z-0"
         />
 
-        {bgLoaded && <BackButton to="/main" />}
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: bgLoaded ? 1 : 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <BackButton to="/main" />
 
-        {bgLoaded && projects.map((project) => (
-          <Link
-            key={project.id}
-            to={project.to}
-            className="absolute block z-20 cursor-pointer flex items-center justify-center"
-            style={project.style}
-            aria-label={project.alt}
-            onMouseEnter={() => setHovered(project.id)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <motion.img
-              src={project.icon}
-              alt={project.alt}
-              className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
-              initial={{ scale: project.imgScale, filter: 'brightness(1)' }}
-              animate={{
-                scale: hovered === project.id ? project.imgScale * 1.05 : project.imgScale,
-                filter: hovered === project.id ? 'brightness(1.15)' : 'brightness(1)',
-              }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
-            />
-          </Link>
-        ))}
+          {projects.map((project) => (
+            <Link
+              key={project.id}
+              to={project.to}
+              className="absolute block z-20 cursor-pointer flex items-center justify-center"
+              style={project.style}
+              aria-label={project.alt}
+              onMouseEnter={() => setHovered(project.id)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <motion.img
+                src={project.icon}
+                alt={project.alt}
+                className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
+                initial={{ scale: project.imgScale, filter: 'brightness(1)' }}
+                animate={{
+                  scale: hovered === project.id ? project.imgScale * 1.05 : project.imgScale,
+                  filter: hovered === project.id ? 'brightness(1.15)' : 'brightness(1)',
+                }}
+                transition={{ duration: 0.22, ease: 'easeOut' }}
+              />
+            </Link>
+          ))}
+        </motion.div>
       </div>
     </motion.div>
   );

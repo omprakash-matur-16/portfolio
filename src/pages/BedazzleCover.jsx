@@ -10,8 +10,8 @@ export default function BedazzleCover() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
-      className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden"
+      transition={{ duration: 1.0, ease: 'easeInOut' }}
+      className="absolute inset-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
     >
       {/* 16:9 canvas */}
       <div

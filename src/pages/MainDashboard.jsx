@@ -48,10 +48,10 @@ export default function MainDashboard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: bgLoaded ? 1 : 0, y: bgLoaded ? 0 : 20 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
-      className="relative w-full h-screen bg-black flex items-center justify-center overflow-hidden"
+      transition={{ duration: 1.0, ease: 'easeInOut' }}
+      className="absolute inset-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
     >
       <div
         className="relative"
@@ -64,29 +64,36 @@ export default function MainDashboard() {
           className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none z-0"
         />
 
-        {bgLoaded && folders.map((folder) => (
-          <Link
-            key={folder.id}
-            to={folder.to}
-            className="absolute block z-20 cursor-pointer flex items-center justify-center"
-            style={folder.style}
-            aria-label={folder.alt}
-            onMouseEnter={() => setHovered(folder.id)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <motion.img
-              src={folder.icon}
-              alt={folder.alt}
-              className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
-              initial={{ scale: folder.imgScale, filter: 'brightness(1)' }}
-              animate={{
-                scale: hovered === folder.id ? folder.imgScale * 1.08 : folder.imgScale,
-                filter: hovered === folder.id ? 'brightness(1.15)' : 'brightness(1)',
-              }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
-            />
-          </Link>
-        ))}
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: bgLoaded ? 1 : 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {folders.map((folder) => (
+            <Link
+              key={folder.id}
+              to={folder.to}
+              className="absolute block z-20 cursor-pointer flex items-center justify-center"
+              style={folder.style}
+              aria-label={folder.alt}
+              onMouseEnter={() => setHovered(folder.id)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <motion.img
+                src={folder.icon}
+                alt={folder.alt}
+                className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
+                initial={{ scale: folder.imgScale, filter: 'brightness(1)' }}
+                animate={{
+                  scale: hovered === folder.id ? folder.imgScale * 1.08 : folder.imgScale,
+                  filter: hovered === folder.id ? 'brightness(1.15)' : 'brightness(1)',
+                }}
+                transition={{ duration: 0.22, ease: 'easeOut' }}
+              />
+            </Link>
+          ))}
+        </motion.div>
       </div>
     </motion.div>
   );

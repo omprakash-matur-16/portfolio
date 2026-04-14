@@ -46,14 +46,14 @@ export default function BedazzleFlow() {
   const currentImageSrc = `/portfolio/assets/b${currentIndex}.png`;
 
   return (
-    <div className="relative w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
+    <div className="absolute inset-0 w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
       
       {/* Return Button */}
       <BackButton to="/projects" />
 
       {/* Main Slideshow Container */}
       <div className="relative w-full h-full flex-grow cursor-none" onClick={handleNext}>
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.img
             key={currentIndex}
             src={currentImageSrc}

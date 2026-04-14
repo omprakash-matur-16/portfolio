@@ -6,7 +6,7 @@ export default function Landing() {
   const navigate = useNavigate();
 
   return (
-    <ImageBackground imageSrc="/portfolio/assets/1.png">
+    <ImageBackground imageSrc="/portfolio/assets/1.png" animatedBg={true}>
       {/* 
         The entire screen is clickable on the landing page,
         so covering the whole area as a single Hotspot. 
