@@ -5,8 +5,26 @@ import BackButton from '../components/BackButton';
 
 export default function BedazzleFlow() {
   const [currentIndex, setCurrentIndex] = useState(1);
+  const [isReady, setIsReady] = useState(false);
   const navigate = useNavigate();
   const totalImages = 21;
+
+  useEffect(() => {
+    // Reset ready state for the new requested slide
+    setIsReady(false);
+
+    // Silently preload the next 3 slides into the browser's cache for a butter-smooth experience
+    const preload = (offset) => {
+      const nextIdx = currentIndex + offset;
+      if (nextIdx <= totalImages) {
+        const img = new window.Image();
+        img.src = `/portfolio/assets/b${nextIdx}.png`;
+      }
+    };
+    preload(1);
+    preload(2);
+    preload(3);
+  }, [currentIndex, totalImages]);
 
   const handleNext = () => {
     if (currentIndex < totalImages) {
@@ -39,8 +57,9 @@ export default function BedazzleFlow() {
           <motion.img
             key={currentIndex}
             src={currentImageSrc}
+            onLoad={() => setIsReady(true)}
             initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={{ opacity: isReady ? 1 : 0, scale: isReady ? 1 : 0.98 }}
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             alt={`Bedazzle Slide ${currentIndex}`}
