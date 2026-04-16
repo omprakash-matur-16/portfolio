@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import BackButton from '../components/BackButton';
 import { resolveAsset } from '../utils/paths';
 
@@ -49,6 +49,13 @@ const projects = [
 export default function Projects() {
   const [hovered, setHovered] = useState(null);
   const [bgLoaded, setBgLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      setBgLoaded(true);
+    }
+  }, []);
 
   return (
     <motion.div
@@ -63,6 +70,7 @@ export default function Projects() {
         style={{ aspectRatio: '16/9', height: '100%', maxWidth: '100%', maxHeight: '100%' }}
       >
         <img
+          ref={imgRef}
           src={resolveAsset('assets/2_2.png')}
           alt="background"
           onLoad={() => setBgLoaded(true)}

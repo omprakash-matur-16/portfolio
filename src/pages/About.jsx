@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import BackButton from '../components/BackButton';
 import { resolveAsset } from '../utils/paths';
@@ -7,6 +7,13 @@ import { resolveAsset } from '../utils/paths';
 
 export default function About() {
   const [bgLoaded, setBgLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current && videoRef.current.readyState >= 3) {
+      setBgLoaded(true);
+    }
+  }, []);
 
   return (
     <motion.div
@@ -19,6 +26,7 @@ export default function About() {
 
         {/* Background Video containing the layout */}
         <video
+          ref={videoRef}
           src={resolveAsset('assets/about_me.mp4')}
           autoPlay
           playsInline

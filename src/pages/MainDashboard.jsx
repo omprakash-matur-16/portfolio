@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { resolveAsset } from '../utils/paths';
 
 const folders = [
@@ -45,6 +45,13 @@ const folders = [
 export default function MainDashboard() {
   const [hovered, setHovered] = useState(null);
   const [bgLoaded, setBgLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      setBgLoaded(true);
+    }
+  }, []);
 
   return (
     <motion.div
@@ -59,6 +66,7 @@ export default function MainDashboard() {
         style={{ aspectRatio: '16/9', height: '100%', maxWidth: '100%', maxHeight: '100%' }}
       >
         <img
+          ref={imgRef}
           src={resolveAsset('assets/2.png')}
           alt="background"
           onLoad={() => setBgLoaded(true)}

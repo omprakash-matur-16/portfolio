@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
@@ -7,6 +7,7 @@ import { resolveAsset } from '../utils/paths';
 export default function BedazzleFlow() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isReady, setIsReady] = useState(false);
+  const imgRef = useRef(null);
   const navigate = useNavigate();
   const totalImages = 21;
 
@@ -22,9 +23,12 @@ export default function BedazzleFlow() {
         img.src = resolveAsset(`assets/b${nextIdx}.png`);
       }
     };
-    preload(1);
-    preload(2);
     preload(3);
+
+    // If image is already in cache and complete, fire ready state immediately
+    if (imgRef.current && imgRef.current.complete) {
+      setIsReady(true);
+    }
   }, [currentIndex, totalImages]);
 
   const handleNext = () => {
@@ -57,6 +61,7 @@ export default function BedazzleFlow() {
         <AnimatePresence>
           <motion.img
             key={currentIndex}
+            ref={imgRef}
             src={currentImageSrc}
             onLoad={() => setIsReady(true)}
             initial={{ opacity: 0, scale: 0.98 }}
