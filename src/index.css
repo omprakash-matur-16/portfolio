@@ -24,7 +24,7 @@ body {
   left: 0;
   width: 32px;
   height: 32px;
-  background-image: url('/portfolio/assets/cursor-pointer.png');
+  background-image: url('./assets/cursor-pointer.png');
   background-size: cover;
   background-position: center;
   pointer-events: none;

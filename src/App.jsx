@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import BedazzleCover from './pages/BedazzleCover';
 import BedazzleFlow from './pages/BedazzleFlow';
 import GlobalPreloader from './components/GlobalPreloader';
+import { resolveAsset } from './utils/paths';
 
 export default function App() {
   const location = useLocation();
@@ -28,13 +29,13 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           
           {/* Main folder static pages */}
-          <Route path="/journey" element={<StaticPage imageSrc="/portfolio/assets/2_3.png" backTo="/main" />} />
+          <Route path="/journey" element={<StaticPage imageSrc={resolveAsset('assets/2_3.png')} backTo="/main" />} />
           <Route path="/contact" element={<Contact />} />
 
           {/* Project sub-pages */}
-          <Route path="/projects/lenskart" element={<StaticPage imageSrc="/portfolio/assets/2_2_1.png" backTo="/projects" />} />
-          <Route path="/projects/candle-bar" element={<StaticPage imageSrc="/portfolio/assets/2_2_2.png" backTo="/projects" />} />
-          <Route path="/projects/newme" element={<StaticPage imageSrc="/portfolio/assets/2_2_3.png" backTo="/projects" />} />
+          <Route path="/projects/lenskart" element={<StaticPage imageSrc={resolveAsset('assets/2_2_1.png')} backTo="/projects" />} />
+          <Route path="/projects/candle-bar" element={<StaticPage imageSrc={resolveAsset('assets/2_2_2.png')} backTo="/projects" />} />
+          <Route path="/projects/newme" element={<StaticPage imageSrc={resolveAsset('assets/2_2_3.png')} backTo="/projects" />} />
           
           {/* Bedazzle cover page which leads into the flow */}
           <Route path="/bedazzle-cover" element={<BedazzleCover />} />

@@ -1,12 +1,13 @@
 import ImageBackground from '../components/ImageBackground';
 import Hotspot from '../components/Hotspot';
 import { useNavigate } from 'react-router-dom';
+import { resolveAsset } from '../utils/paths';
 
 export default function Landing() {
   const navigate = useNavigate();
 
   return (
-    <ImageBackground imageSrc="/portfolio/assets/1.png" animatedBg={true}>
+    <ImageBackground imageSrc={resolveAsset('assets/1.png')} animatedBg={true}>
       {/* 
         The entire screen is clickable on the landing page,
         so covering the whole area as a single Hotspot. 

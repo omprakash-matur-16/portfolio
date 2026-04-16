@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import StaticPage from '../components/StaticPage';
+import { resolveAsset } from '../utils/paths';
 
 export default function Contact() {
 
@@ -41,7 +42,7 @@ export default function Contact() {
   ];
 
   return (
-    <StaticPage imageSrc="/portfolio/assets/2_4.png" backTo="/main">
+    <StaticPage imageSrc={resolveAsset('assets/2_4.png')} backTo="/main">
       {socialLinks.map((link) => (
         <a
           key={link.id}

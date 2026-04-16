@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
+import { resolveAsset } from '../utils/paths';
 
 export default function BedazzleFlow() {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -18,7 +19,7 @@ export default function BedazzleFlow() {
       const nextIdx = currentIndex + offset;
       if (nextIdx <= totalImages) {
         const img = new window.Image();
-        img.src = `/portfolio/assets/b${nextIdx}.png`;
+        img.src = resolveAsset(`assets/b${nextIdx}.png`);
       }
     };
     preload(1);
@@ -43,7 +44,7 @@ export default function BedazzleFlow() {
     }
   };
 
-  const currentImageSrc = `/portfolio/assets/b${currentIndex}.png`;
+  const currentImageSrc = resolveAsset(`assets/b${currentIndex}.png`);
 
   return (
     <div className="absolute inset-0 w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden">

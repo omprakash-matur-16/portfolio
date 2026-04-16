@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { resolveAsset } from '../utils/paths';
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -35,7 +36,7 @@ export default function CustomCursor() {
       style={{
         left: `${position.x - 12}px`,
         top: `${position.y - 12}px`,
-        backgroundImage: "url('/portfolio/assets/cursor-pointer.png')",
+        backgroundImage: `url('${resolveAsset('assets/cursor-pointer.png')}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

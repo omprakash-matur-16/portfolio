@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import BackButton from '../components/BackButton';
+import { resolveAsset } from '../utils/paths';
 
 // The envelope graphics were exported as centered 1920x1080 images.
 // We use a fixed wrapper exactly where the envelope should appear on screen,
@@ -11,7 +12,7 @@ const projects = [
     id: 'lenskart',
     to: '/projects/lenskart',
     alt: 'Lenskart',
-    icon: '/portfolio/assets/lenskart folder icon.png',
+    icon: resolveAsset('assets/lenskart folder icon.png'),
     // Nudge up and scale up slightly
     style: { top: '55%', left: '15%', width: '16%', height: '30%' },
     imgScale: 5.5,
@@ -20,7 +21,7 @@ const projects = [
     id: 'candle-bar',
     to: '/projects/candle-bar',
     alt: 'The Candle Bar',
-    icon: '/portfolio/assets/the candle bar folder icon.png',
+    icon: resolveAsset('assets/the candle bar folder icon.png'),
     // Nudge down and scale down slightly
     style: { top: '55%', left: '33%', width: '16%', height: '24.5%' },
     imgScale: 5.5,
@@ -29,7 +30,7 @@ const projects = [
     id: 'newme',
     to: '/projects/newme',
     alt: 'NewMe',
-    icon: '/portfolio/assets/new me folder icon.png',
+    icon: resolveAsset('assets/new me folder icon.png'),
     // Baseline
     style: { top: '55%', left: '56%', width: '16%', height: '24%' },
     imgScale: 5.5,
@@ -38,7 +39,7 @@ const projects = [
     id: 'bedazzle',
     to: '/bedazzle-cover',
     alt: 'Bedazzle',
-    icon: '/portfolio/assets/bedazzle folder icon.png',
+    icon: resolveAsset('assets/bedazzle folder icon.png'),
     // Nudge moderately down to align with baseline
     style: { top: '55%', left: '73%', width: '16%', height: '38%' },
     imgScale: 5.5,
@@ -62,7 +63,7 @@ export default function Projects() {
         style={{ aspectRatio: '16/9', height: '100%', maxWidth: '100%', maxHeight: '100%' }}
       >
         <img
-          src="/portfolio/assets/2_2.png"
+          src={resolveAsset('assets/2_2.png')}
           alt="background"
           onLoad={() => setBgLoaded(true)}
           className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none z-0"
