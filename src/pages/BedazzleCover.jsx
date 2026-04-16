@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
@@ -5,6 +6,14 @@ import { resolveAsset } from '../utils/paths';
 
 export default function BedazzleCover() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Silently preload the first fewslides while the user is reading this cover page
+    [1, 2, 3].forEach((num) => {
+      const img = new window.Image();
+      img.src = resolveAsset(`assets/b${num}.png`);
+    });
+  }, []);
 
   return (
     <motion.div

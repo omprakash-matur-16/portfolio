@@ -18,7 +18,8 @@ const criticalImages = [
   resolveAsset('assets/the candle bar folder icon.png'),
   resolveAsset('assets/new me folder icon.png'),
   resolveAsset('assets/bedazzle folder icon.png'),
-  resolveAsset('assets/conveyor belt.png')
+  resolveAsset('assets/conveyor belt.png'),
+  resolveAsset('assets/b1.png')
 ];
 
 export default function GlobalPreloader() {

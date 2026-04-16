@@ -23,6 +23,8 @@ export default function BedazzleFlow() {
         img.src = resolveAsset(`assets/b${nextIdx}.png`);
       }
     };
+    preload(1);
+    preload(2);
     preload(3);
 
     // If image is already in cache and complete, fire ready state immediately
