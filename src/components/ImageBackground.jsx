@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function ImageBackground({ imageSrc, children, animatedBg = false }) {
   const [bgLoaded, setBgLoaded] = useState(false);

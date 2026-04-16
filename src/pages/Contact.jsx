@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import StaticPage from '../components/StaticPage';
 import { resolveAsset } from '../utils/paths';
 
@@ -43,19 +43,21 @@ export default function Contact() {
 
   return (
     <StaticPage imageSrc={resolveAsset('assets/2_4.png')} backTo="/main">
-      {socialLinks.map((link) => (
-        <a
-          key={link.id}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`absolute z-30 cursor-pointer flex items-center text-black hover:underline underline-offset-4 decoration-black/50 hover:decoration-black ${link.tilt || ''}`}
-          style={{ ...link.style, fontSize: '1.4vw', fontFamily: 'sans-serif' }}
-          aria-label={link.ariaLabel}
-        >
-          {link.text}
-        </a>
-      ))}
+      <div className="absolute inset-0 w-full h-full">
+        {socialLinks.map((link) => (
+          <a
+            key={link.id}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`absolute z-30 cursor-pointer flex items-center text-black hover:underline underline-offset-4 decoration-black/50 hover:decoration-black ${link.tilt || ''}`}
+            style={{ ...link.style, fontSize: '1.4vw', fontFamily: 'sans-serif' }}
+            aria-label={link.ariaLabel}
+          >
+            {link.text}
+          </a>
+        ))}
+      </div>
     </StaticPage>
   );
 }

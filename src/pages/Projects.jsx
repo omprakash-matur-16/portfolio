@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import BackButton from '../components/BackButton';
 import { resolveAsset } from '../utils/paths';
 

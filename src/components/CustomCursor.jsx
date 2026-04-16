@@ -6,7 +6,6 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Add a class to indicate JS is loaded, allowing CSS to hide default cursor
     document.documentElement.classList.add('js-loaded');
 
     const updatePosition = (e) => {
