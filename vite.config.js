@@ -4,7 +4,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/portfolio/',
+  // Use '/' on Vercel or local, but '/portfolio/' for GitHub Pages
+  base: process.env.VERCEL ? '/' : '/portfolio/',
   plugins: [
     react(),
     tailwindcss(),
