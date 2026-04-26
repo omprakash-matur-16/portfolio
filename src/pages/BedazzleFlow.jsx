@@ -3,10 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import { resolveAsset } from '../utils/paths';
+import useMobile from '../utils/useMobile';
 
 export default function BedazzleFlow() {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isReady, setIsReady] = useState(false);
+  const isMobile = useMobile();
   const imgRef = useRef(null);
   const navigate = useNavigate();
   const totalImages = 21;
@@ -53,13 +55,13 @@ export default function BedazzleFlow() {
   const currentImageSrc = resolveAsset(`assets/b${currentIndex}.png`);
 
   return (
-    <div className="absolute inset-0 w-full h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
+    <div className={`absolute inset-0 w-full ${isMobile ? 'h-[100dvh] overflow-y-auto' : 'h-screen overflow-hidden'} bg-black flex flex-col items-center justify-start`}>
       
       {/* Return Button */}
       <BackButton to="/projects" />
 
       {/* Main Slideshow Container */}
-      <div className="relative w-full h-full flex-grow cursor-none" onClick={handleNext}>
+      <div className={`relative w-full ${isMobile ? 'h-auto aspect-[16/9]' : 'h-full flex-grow'}`} onClick={handleNext}>
         <AnimatePresence>
           <motion.img
             key={currentIndex}
@@ -71,7 +73,7 @@ export default function BedazzleFlow() {
             exit={{ opacity: 0, scale: 1.02 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             alt={`Bedazzle Slide ${currentIndex}`}
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+            className={`absolute inset-0 w-full h-full object-fill pointer-events-none`}
           />
         </AnimatePresence>
       </div>
@@ -90,7 +92,7 @@ export default function BedazzleFlow() {
       
       {/* Invisible Back handler for left side of screen */}
       <div 
-        className="absolute top-0 left-0 w-1/4 h-full z-10 cursor-none" 
+        className="absolute top-0 left-0 w-1/4 h-full z-10" 
         onClick={handlePrev}
       />
 

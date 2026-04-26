@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import BedazzleCover from './pages/BedazzleCover';
 import BedazzleFlow from './pages/BedazzleFlow';
 import GlobalPreloader from './components/GlobalPreloader';
+import OrientationHint from './components/OrientationHint';
 import { resolveAsset } from './utils/paths';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <>
       <GlobalPreloader />
+      <OrientationHint />
       <CustomCursor />
       
       {/* Route transitions */}

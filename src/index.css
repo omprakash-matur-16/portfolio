@@ -4,9 +4,11 @@
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
-/* Hide default cursor globally */
-html, body, * {
-  cursor: none !important;
+/* Hide default cursor only on desktop/devices with a mouse */
+@media (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
 }
 
 body {

@@ -15,15 +15,15 @@ export default function Hotspot({ to, top, left, width, height, onClick, iconSrc
     <motion.img 
       src={iconSrc} 
       alt={alt}
-      className="w-full h-full object-contain cursor-none drop-shadow-md"
+      className="w-full h-full object-contain drop-shadow-md"
       whileHover={{ scale: 1.08, filter: "brightness(1.1)" }}
       transition={{ duration: 0.25, ease: "easeOut" }}
     />
   ) : (
-    <div className="w-full h-full cursor-none" />
+    <div className="w-full h-full" />
   );
 
-  const containerClasses = "absolute block z-10 cursor-none";
+  const containerClasses = "absolute block z-10";
 
   if (onClick && !to) {
     return (

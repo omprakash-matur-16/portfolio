@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import useMobile from '../utils/useMobile';
 
-export default function ImageBackground({ imageSrc, children, animatedBg = false }) {
+export default function ImageBackground({ imageSrc, children, animatedBg = false, fullScreenChildren }) {
   const [bgLoaded, setBgLoaded] = useState(false);
+  const isMobile = useMobile();
 
   return (
     <motion.div
@@ -10,14 +12,19 @@ export default function ImageBackground({ imageSrc, children, animatedBg = false
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 1.0, ease: "easeInOut" }}
-      className="absolute inset-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
+      className={`absolute inset-0 w-full ${isMobile ? 'h-[100dvh] overflow-y-auto' : 'h-screen overflow-hidden'} bg-black flex ${isMobile ? 'items-start' : 'items-center'} justify-center`}
     >
-      <div className="relative h-full aspect-[16/9] max-w-full">
+      {fullScreenChildren}
+      
+      <div 
+        className={`relative aspect-[16/9] ${isMobile ? 'w-full h-auto' : 'h-full max-w-full'}`}
+        style={isMobile ? { flexShrink: 0 } : {}}
+      >
         <motion.img
           src={imageSrc}
           alt="background"
           onLoad={() => setBgLoaded(true)}
-          className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none"
+          className="w-full h-full object-fill pointer-events-none select-none"
           animate={animatedBg ? { scale: [1, 1.04, 1] } : undefined}
           transition={animatedBg ? { repeat: Infinity, duration: 10, ease: "easeInOut" } : undefined}
         />

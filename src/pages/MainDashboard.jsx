@@ -45,12 +45,20 @@ const folders = [
 export default function MainDashboard() {
   const [hovered, setHovered] = useState(null);
   const [bgLoaded, setBgLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const imgRef = useRef(null);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     if (imgRef.current && imgRef.current.complete) {
       setBgLoaded(true);
     }
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
@@ -59,18 +67,20 @@ export default function MainDashboard() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 1.0, ease: 'easeInOut' }}
-      className="absolute inset-0 w-full h-screen bg-black flex items-center justify-center overflow-hidden"
+      className={`absolute inset-0 w-full ${isMobile ? 'h-[100dvh] overflow-y-auto' : 'h-screen overflow-hidden'} bg-black flex ${isMobile ? 'items-start' : 'items-center'} justify-center`}
     >
       <div
-        className="relative"
-        style={{ aspectRatio: '16/9', height: '100%', maxWidth: '100%', maxHeight: '100%' }}
+        className={`relative aspect-[16/9] ${isMobile ? 'w-full h-auto' : 'h-full max-w-full'}`}
+        style={isMobile ? { flexShrink: 0 } : { 
+          aspectRatio: '16/9', height: '100%', maxWidth: '100%', maxHeight: '100%' 
+        }}
       >
         <img
           ref={imgRef}
           src={resolveAsset('assets/2.png')}
           alt="background"
           onLoad={() => setBgLoaded(true)}
-          className="absolute inset-0 w-full h-full object-fill pointer-events-none select-none z-0"
+          className="w-full h-full object-fill pointer-events-none select-none z-0"
         />
 
         <motion.div
@@ -93,9 +103,11 @@ export default function MainDashboard() {
                 src={folder.icon}
                 alt={folder.alt}
                 className="w-full h-full object-contain pointer-events-none drop-shadow-xl"
-                initial={{ scale: folder.imgScale, filter: 'brightness(1)' }}
+                initial={{ scale: folder.imgScale * (isMobile ? 1.1 : 1), filter: 'brightness(1)' }}
                 animate={{
-                  scale: hovered === folder.id ? folder.imgScale * 1.08 : folder.imgScale,
+                  scale: hovered === folder.id 
+                    ? folder.imgScale * (isMobile ? 1.1 : 1) * 1.08 
+                    : folder.imgScale * (isMobile ? 1.1 : 1),
                   filter: hovered === folder.id ? 'brightness(1.15)' : 'brightness(1)',
                 }}
                 transition={{ duration: 0.22, ease: 'easeOut' }}

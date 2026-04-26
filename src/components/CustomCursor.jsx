@@ -6,6 +6,10 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Only enable custom cursor if device has a mouse
+    const isMouse = window.matchMedia('(pointer: fine)').matches;
+    if (!isMouse) return;
+
     document.documentElement.classList.add('js-loaded');
 
     const updatePosition = (e) => {
